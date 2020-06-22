@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from './models/user';
 
 @Component({
   selector: 'app-root',
@@ -9,15 +10,9 @@ export class AppComponent {
   public title: any;
   public version = 1;
   public show: boolean;
+  public color = '#00ffd087'
 
-  public users = [
-    {
-      name:'john'
-    },
-    {
-      name:'kayzer'
-    }
-  ];
+  public users = new Array<User>();
 
 
   public srcImg = {
@@ -30,24 +25,18 @@ export class AppComponent {
       caption: 'syntaxe'
     };
 
-    
+
 
 
   }
 
   public handleKeydown(event: KeyboardEvent) {
     console.log(event);
-    
+
   }
 
 
-  public handleClick(event: MouseEvent, input: HTMLInputElement): void {
-    console.log(event);
-    console.log(input);
-
-    event.preventDefault();
-    event.stopPropagation();
-
-    console.log('clicked');
+  public addUser(event: MouseEvent, input: HTMLInputElement): void {
+    this.users.push(new User(input.value, false));
   }
 }

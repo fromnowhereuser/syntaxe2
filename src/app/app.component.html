@@ -2,15 +2,20 @@
 
 </header>
 <main>
-  <h1 [style.color]="'red'">{{title?.caption}}: {{version}}</h1>
 
+  <h1 [ngStyle]="{color: color}">{{title?.caption}}: {{version}}</h1>
+  <input type="color" #colorInput (change)="color = colorInput.value">
+  
+  <div></div>
 
   <input type="text" #input1>
+  <button (click)="addUser($event, input1)">add user</button>
 
 
-
-  <div *ngFor="let user of users">
-    {{user.name}}
+  <div style="border: 1px #00ffd087 solid;">
+    <div *ngFor="let user of users" [ngClass]="{'is-admin': user.isAdmin}">
+      {{user.name}} <button (click)="user.toggleAdmin()">toggle admin</button>
+    </div>
   </div>
 
   <div [ngSwitch]="users.length">
@@ -19,9 +24,6 @@
     <div *ngSwitchDefault>you have lot of users !</div>
   </div>
 
-
-
-  <button (mouseup)="textArea.value = input1.value; handleClick($event, input1)">click me</button>
 
 </main>
 <footer>
