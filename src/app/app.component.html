@@ -3,13 +3,24 @@
 </header>
 <main>
   <h1 [style.color]="'red'">{{title?.caption}}: {{version}}</h1>
-  <h1 [innerHTML]="title?.caption" [style.color]="'red'"></h1>
 
-  <img src={{srcImg.url}} alt="">
-
-  <textarea (keydown.space)="handleKeydown($event)" id="" cols="30" rows="10" #textArea></textarea>
 
   <input type="text" #input1>
+
+
+
+  <div *ngFor="let user of users">
+    {{user.name}}
+  </div>
+
+  <div [ngSwitch]="users.length">
+    <div *ngSwitchCase="0">you dont have any user yet</div>
+    <div *ngSwitchCase="1">you only one user</div>
+    <div *ngSwitchDefault>you have lot of users !</div>
+  </div>
+
+
+
   <button (mouseup)="textArea.value = input1.value; handleClick($event, input1)">click me</button>
 
 </main>

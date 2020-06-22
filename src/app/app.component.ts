@@ -8,16 +8,31 @@ import { Component } from '@angular/core';
 export class AppComponent {
   public title: any;
   public version = 1;
+  public show: boolean;
+
+  public users = [
+    {
+      name:'john'
+    },
+    {
+      name:'kayzer'
+    }
+  ];
+
+
   public srcImg = {
     url: 'https://media-exp1.licdn.com/dms/image/C560BAQHMnA03XDdf3w/company-logo_200_200/0?e=2159024400&v=beta&t=C7KMOtnrJwGrMXmgIk2u1B8a7VRfgxMwXng9cdP9kZk'
   }
 
   constructor() {
-    setTimeout(() => {
-      this.title = {
-        caption: 'syntaxe'
-      };
-    }, 1000);
+
+    this.title = {
+      caption: 'syntaxe'
+    };
+
+    
+
+
   }
 
   public handleKeydown(event: KeyboardEvent) {
