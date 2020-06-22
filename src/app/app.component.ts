@@ -11,6 +11,7 @@ export class AppComponent {
   public version = 1;
   public show: boolean;
   public color = '#00ffd087'
+  public selectedUser: User = undefined;
 
   public users = new Array<User>();
 
@@ -24,15 +25,15 @@ export class AppComponent {
     this.title = {
       caption: 'syntaxe'
     };
-
-
-
-
   }
 
   public handleKeydown(event: KeyboardEvent) {
     console.log(event);
+  }
 
+  public handleUserSelect(user: User) {
+    console.log(user);
+    this.selectedUser = user;
   }
 
 
