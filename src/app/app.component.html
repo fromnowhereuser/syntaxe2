@@ -3,10 +3,10 @@
 </header>
 <main>
 
-  <h1 [ngStyle]="{color: color}">{{title?.caption}}: {{version}}</h1>
+  <h1 [ngStyle]="{color: color}" [title]="'du texte'" appDoNothing>{{title?.caption}}: {{version}} </h1>
   <input type="color" #colorInput (change)="color = colorInput.value">
 
-  <div></div>
+  <div [title]="'du texte'" appDoNothing></div>
 
   <input type="text" #input1>
   <button (click)="addUser($event, input1)">add user</button>

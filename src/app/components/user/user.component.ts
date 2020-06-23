@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { User } from 'src/app/models/user';
 
 @Component({
@@ -6,7 +6,7 @@ import { User } from 'src/app/models/user';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss'],
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnDestroy {
   
   @Input('user')
   public user: User;
@@ -18,6 +18,11 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  ngOnDestroy(): void {
+    throw new Error("Method not implemented.");
+  }
+
 
   public select() {
     this.userSelect.emit(this.user);
