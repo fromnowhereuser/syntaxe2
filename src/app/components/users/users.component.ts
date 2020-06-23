@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MonService } from 'src/app/services/mon-service';
+import { AppConfig } from 'src/app/app.config';
 
 @Component({
   selector: 'app-users',
@@ -8,7 +8,9 @@ import { MonService } from 'src/app/services/mon-service';
 })
 export class UsersComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    appConfig: AppConfig
+  ) { }
 
   ngOnInit(): void {
   }
