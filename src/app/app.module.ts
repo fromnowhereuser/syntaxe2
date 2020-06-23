@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
@@ -13,6 +14,8 @@ import { AppConfig, CONFIG1 } from './app.config';
 import { ApiService } from './services/api.service';
 import { UserPipe } from './pipes/user.pipe';
 import { UserFilterByNamePipe } from './pipes/user-filter-by-name.pipe';
+import { UserFormByTemplateComponent } from './components/user-form-by-template/user-form-by-template.component';
+import { UserFormByCodeComponent } from './components/user-form-by-code/user-form-by-code.component';
 
 @NgModule({
   declarations: [
@@ -22,10 +25,14 @@ import { UserFilterByNamePipe } from './pipes/user-filter-by-name.pipe';
     ZoomDirective,
     UsersComponent,
     UserPipe,
-    UserFilterByNamePipe
+    UserFilterByNamePipe,
+    UserFormByTemplateComponent,
+    UserFormByCodeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
 

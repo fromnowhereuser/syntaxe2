@@ -10,7 +10,7 @@
 
   <div style="border: 1px #00ffd087 solid;">
     <div>
-      <label for="">filter by name</label><input type="text" #filterInput><button >filter</button>
+      <label for="">filter by name</label><input type="text" #filterInput><button>filter</button>
     </div>
     <div *ngFor="let user of usersService.getAll() | userFilterByName:filterInput.value">
       <app-user (userSelect)="handleUserSelect($event)" [user]="user"></app-user>
@@ -31,7 +31,13 @@
   <div>{{usersService.getAll() | slice:0:3 | json | titlecase}}</div>
   <div>{{myDate | date:'mm:ss'}}</div>
   <div>{{myDate | date}}</div>
-  
+
+
+  <hr>
+  <app-user-form-by-template>
+  </app-user-form-by-template>
+  <hr>
+
 
 </main>
 <footer>
