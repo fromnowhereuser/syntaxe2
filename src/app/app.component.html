@@ -25,9 +25,14 @@
   </div>
 
   <div style="border: 1px dashed yellow;">
-    selected user: {{selectedUser?.name}}
+    selected user: {{selectedUser | user}}
   </div>
 
+
+  <div>{{usersService.getAll() | slice:0:3 | json | titlecase}}</div>
+  <div>{{myDate | date:'mm:ss'}}</div>
+  <div>{{myDate | date}}</div>
+  
 
 </main>
 <footer>

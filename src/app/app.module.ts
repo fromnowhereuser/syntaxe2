@@ -11,6 +11,7 @@ import { UsersGenericService } from './services/users-generic.service';
 import { Users2Service } from './services/users2.service';
 import { AppConfig, CONFIG1 } from './app.config';
 import { ApiService } from './services/api.service';
+import { UserPipe } from './pipes/user.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ApiService } from './services/api.service';
     UserComponent,
     DoNothingDirective,
     ZoomDirective,
-    UsersComponent
+    UsersComponent,
+    UserPipe
   ],
   imports: [
     BrowserModule
@@ -42,9 +44,9 @@ import { ApiService } from './services/api.service';
         api: ApiService
         ) => {
         if(appConfig.mode === 1 ) {
-          return new Users2Service();
-        } else {
           return new UsersService(api);
+        } else {
+          return new Users2Service();
         }
       }
     },

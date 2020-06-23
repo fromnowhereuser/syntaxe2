@@ -13,6 +13,7 @@ export class AppComponent {
   public show: boolean;
   public color = '#00ffd087'
   public selectedUser: User = undefined;
+  public myDate = new Date();
 
   constructor(
     public usersService: UsersGenericService
