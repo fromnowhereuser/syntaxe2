@@ -12,6 +12,7 @@ import { Users2Service } from './services/users2.service';
 import { AppConfig, CONFIG1 } from './app.config';
 import { ApiService } from './services/api.service';
 import { UserPipe } from './pipes/user.pipe';
+import { UserFilterByNamePipe } from './pipes/user-filter-by-name.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { UserPipe } from './pipes/user.pipe';
     DoNothingDirective,
     ZoomDirective,
     UsersComponent,
-    UserPipe
+    UserPipe,
+    UserFilterByNamePipe
   ],
   imports: [
     BrowserModule

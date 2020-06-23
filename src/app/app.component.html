@@ -4,16 +4,16 @@
 <main>
 
   <h1 [ngStyle]="{color: color}" [title]="'du texte'" appDoNothing>{{title?.caption}}: {{version}} </h1>
-  <input type="color" #colorInput (change)="color = colorInput.value">
-
-  <div [title]="'du texte'" style="font-size: 10px;" [size]="43" appZoom appDoNothing></div>
 
   <input type="text" #input1>
   <button (click)="addUser($event, input1)">add user</button>
 
 
   <div style="border: 1px #00ffd087 solid;">
-    <div *ngFor="let user of usersService.getAll()">
+    <div>
+      <label for="">filter by name</label><input type="text"><button>filter</button>
+    </div>
+    <div *ngFor="let user of usersService.getAll() | userFilterByName:'23'">
       <app-user (userSelect)="handleUserSelect($event)" [user]="user"></app-user>
     </div>
   </div>
