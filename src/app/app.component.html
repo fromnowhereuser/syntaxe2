@@ -6,19 +6,19 @@
   <h1 [ngStyle]="{color: color}" [title]="'du texte'" appDoNothing>{{title?.caption}}: {{version}} </h1>
   <input type="color" #colorInput (change)="color = colorInput.value">
 
-  <div [title]="'du texte'" style="font-size: 10px;" [size]="43" appZoom appDoNothing>?</div>
+  <div [title]="'du texte'" style="font-size: 10px;" [size]="43" appZoom appDoNothing></div>
 
   <input type="text" #input1>
   <button (click)="addUser($event, input1)">add user</button>
 
 
   <div style="border: 1px #00ffd087 solid;">
-    <div *ngFor="let user of users">
+    <div *ngFor="let user of usersService.getAll()">
       <app-user (userSelect)="handleUserSelect($event)" [user]="user"></app-user>
     </div>
   </div>
 
-  <div [ngSwitch]="users.length">
+  <div [ngSwitch]="usersService.getAll().length">
     <div *ngSwitchCase="0">you dont have any user yet</div>
     <div *ngSwitchCase="1">you only one user</div>
     <div *ngSwitchDefault>you have lot of users !</div>

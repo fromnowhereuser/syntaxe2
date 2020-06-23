@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from './models/user';
+import { UsersGenericService } from './services/users-generic.service';
 
 @Component({
   selector: 'app-root',
@@ -13,15 +14,9 @@ export class AppComponent {
   public color = '#00ffd087'
   public selectedUser: User = undefined;
 
-  public users = new Array<User>();
-
-
-  public srcImg = {
-    url: 'https://media-exp1.licdn.com/dms/image/C560BAQHMnA03XDdf3w/company-logo_200_200/0?e=2159024400&v=beta&t=C7KMOtnrJwGrMXmgIk2u1B8a7VRfgxMwXng9cdP9kZk'
-  }
-
-  constructor() {
-
+  constructor(
+    public usersService: UsersGenericService
+  ) {
     this.title = {
       caption: 'syntaxe'
     };
@@ -38,6 +33,6 @@ export class AppComponent {
 
 
   public addUser(event: MouseEvent, input: HTMLInputElement): void {
-    this.users.push(new User(input.value, false));
+    this.usersService.addUser(new User(input.value, false));
   }
 }

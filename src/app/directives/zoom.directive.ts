@@ -4,25 +4,25 @@ import { Directive, Input, Output, EventEmitter, HostListener, ElementRef, OnIni
   selector: '[appZoom]'
 })
 export class ZoomDirective implements OnInit {
-  
+
   @Input('size')
-  size: number
-
-  constructor(private ref: ElementRef<HTMLElement>) {
-    console.log('ZoomDirective');
-
-  }
-
-  ngOnInit(): void {
-    this.normalSize = this.ref.nativeElement.style.fontSize.match(/\d+/)[0];
-    console.log(this.normalSize);
-  }
+  private size: number
 
   private normalSize;
 
-  @HostListener('mouseover')
-  private onmouseover() {
+  constructor(private ref: ElementRef<HTMLElement>) {
+  }
 
+  ngOnInit(): void {
+    // console.log(getComputedStyle(this.ref.nativeElement).fontSize);
+    this.normalSize = this.ref.nativeElement.style.fontSize.match(/\d+/)[0];
+    // console.log(this.normalSize);
+  }
+
+
+  @HostListener('mouseover', ['$event'])
+  private onmouseover(event: MouseEvent) {   
+    console.log(event.target == this.ref.nativeElement);
     this.ref.nativeElement.style.fontSize = this.size + 'px';
   }
 
