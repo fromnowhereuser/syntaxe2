@@ -14,6 +14,7 @@ export class AppComponent {
   public color = '#00ffd087'
   public selectedUser: User = undefined;
   public myDate = new Date();
+  public filterName = "";
 
   constructor(
     public usersService: UsersGenericService

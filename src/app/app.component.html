@@ -8,12 +8,11 @@
   <input type="text" #input1>
   <button (click)="addUser($event, input1)">add user</button>
 
-
   <div style="border: 1px #00ffd087 solid;">
     <div>
-      <label for="">filter by name</label><input type="text"><button>filter</button>
+      <label for="">filter by name</label><input type="text" #filterInput><button >filter</button>
     </div>
-    <div *ngFor="let user of usersService.getAll() | userFilterByName:'23'">
+    <div *ngFor="let user of usersService.getAll() | userFilterByName:filterInput.value">
       <app-user (userSelect)="handleUserSelect($event)" [user]="user"></app-user>
     </div>
   </div>
