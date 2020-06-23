@@ -5,8 +5,6 @@
 
   <h1 [ngStyle]="{color: color}" [title]="'du texte'" appDoNothing>{{title?.caption}}: {{version}} </h1>
 
-  <input type="text" #input1>
-  <button (click)="addUser($event, input1)">add user</button>
 
   <div style="border: 1px #00ffd087 solid;">
     <div>
@@ -36,6 +34,9 @@
   <hr>
   <app-user-form-by-template>
   </app-user-form-by-template>
+  <hr>
+  <app-user-form-by-code (usercreate)="usersService.addUser($event)">
+  </app-user-form-by-code>
   <hr>
 
 

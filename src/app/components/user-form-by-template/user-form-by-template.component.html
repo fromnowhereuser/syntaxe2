@@ -1,8 +1,8 @@
 <form (ngSubmit)="submit(userForm.value)" #userForm="ngForm">
-    <div class="form-group">
+    <div>
         <label>name</label><input name="name" type="text" [(ngModel)]="user.name" />
     </div>
-    <div class="form-group">
+    <div>
         <label>isAdmin</label><input name="isAdmin" type="checkbox" [(ngModel)]="user.isAdmin" />
     </div>
     <div>

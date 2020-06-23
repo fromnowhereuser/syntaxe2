@@ -1,11 +1,16 @@
-<!-- form group -->
-<form>
+<form (ngSubmit)="submit()" [formGroup]="userForm">
 
-    <!-- form control -->
-    <input type="text">
-    <input type="text">
-    <input type="text">
-    <input type="text">
+    <div>
+        <label>name</label><input name="name" type="text" formControlName="name" />
+    </div>
 
+    <div>
+        <label>isAdmin</label><input name="isAdmin" type="checkbox" formControlName="isAdmin" />
+    </div>
 
+    <div>
+        <button [disabled]="userForm.invalid" type="submit">
+            valid
+        </button>
+    </div>
 </form>
