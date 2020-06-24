@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { ApiService } from './api.service';
 import { UsersGenericService } from './users-generic.service';
+import { Observable, from } from 'rxjs';
 
 @Injectable()
 export class UsersService implements UsersGenericService {
@@ -10,6 +11,9 @@ export class UsersService implements UsersGenericService {
   constructor(
     private api: ApiService
   ) { }
+  getAllAsync(): Observable<User[]> {
+    return from([]);
+  }
 
   public getAll(): Array<User> {
     return this.users;

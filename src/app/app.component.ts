@@ -17,6 +17,7 @@ export class AppComponent {
   public selectedUser: User = undefined;
   public myDate = new Date();
   public filterName = "";
+  public users: Array<User>;
 
   constructor(
     public usersService: UsersGenericService
@@ -24,22 +25,11 @@ export class AppComponent {
     this.title = {
       caption: 'syntaxe'
     };
-    
-    from([1, 2, 3])
-      .pipe(
-        map(val => val * 2),
-        reduce((acc, val) => acc + val)
-      )
-      .subscribe(val => console.log(val));
 
-
-    of([1, 2, 3])
-      .pipe(
-        switchMap(val => val),
-        map(val => val * 2),
-        reduce((acc, val) => acc + val)
-      )
-      .subscribe(val => console.log(val));
+    this
+      .usersService
+      .getAllAsync()
+      .subscribe(val => this.users = val);
 
   }
 

@@ -10,7 +10,12 @@
     <div>
       <label for="">filter by name</label><input type="text" #filterInput><button>filter</button>
     </div>
-    <div *ngFor="let user of usersService.getAll() | userFilterByName:filterInput.value">
+    <!-- 
+      <div *ngFor="let user of usersService.getAll() | userFilterByName:filterInput.value">
+      <app-user (userSelect)="handleUserSelect($event)" [user]="user"></app-user>
+    </div> 
+  -->
+    <div *ngFor="let user of users">
       <app-user (userSelect)="handleUserSelect($event)" [user]="user"></app-user>
     </div>
   </div>
