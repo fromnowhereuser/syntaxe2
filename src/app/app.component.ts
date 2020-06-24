@@ -27,10 +27,10 @@ export class AppComponent {
     };
 
     this
-      .usersService
-      .getAllAsync()
-      .subscribe(val => this.users = val);
-
+    .usersService
+    .getAllAsync()
+    .subscribe(val => this.users = val);
+    
   }
 
   public handleKeydown(event: KeyboardEvent) {
