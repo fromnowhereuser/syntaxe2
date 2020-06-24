@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { User } from 'src/app/models/user';
 
 @Component({
@@ -8,6 +8,9 @@ import { User } from 'src/app/models/user';
 })
 export class UserFormByTemplateComponent implements OnInit {
   public user = new User('', false);
+
+  @Output('usercreate')
+  usercreate = new EventEmitter<User>();
 
   constructor() {
 
@@ -21,5 +24,11 @@ export class UserFormByTemplateComponent implements OnInit {
 
   submit(userData: any) {
     console.log(userData);
+
+    const user = new User('', false);
+    Object.assign(user, this.user);
+
+    this.usercreate.emit(user);
+
   }
 }

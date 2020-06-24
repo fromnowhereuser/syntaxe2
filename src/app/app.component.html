@@ -32,7 +32,7 @@
 
 
   <hr>
-  <app-user-form-by-template>
+  <app-user-form-by-template (usercreate)="usersService.addUser($event)">
   </app-user-form-by-template>
   <hr>
   <app-user-form-by-code (usercreate)="usersService.addUser($event)">
