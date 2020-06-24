@@ -2,6 +2,11 @@
 
     <div>
         <label>name</label><input name="name" type="text" formControlName="name" />
+        <!-- <div *ngIf="userForm.get('name').dirty && userForm.get('name').hasError('required')">
+            name is required
+        </div> -->
+        <div *ngIf="nameCtrl.dirty && nameCtrl.hasError('required')">name is required</div>
+        <div *ngIf="nameCtrl.dirty && nameCtrl.hasError('minlength')">name must be at least 4 chars</div>
     </div>
 
     <div>

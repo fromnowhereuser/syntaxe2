@@ -1,6 +1,6 @@
 <form (ngSubmit)="submit(userForm.value)" #userForm="ngForm">
     <div>
-        <label>name</label><input name="name" type="text" [(ngModel)]="user.name" />
+        <label>name</label><input name="name" type="text" [(ngModel)]="user.name" required minlength="4"/>
     </div>
     <div>
         <label>isAdmin</label><input name="isAdmin" type="checkbox" [(ngModel)]="user.isAdmin" />

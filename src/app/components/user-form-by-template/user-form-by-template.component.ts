@@ -13,22 +13,14 @@ export class UserFormByTemplateComponent implements OnInit {
   usercreate = new EventEmitter<User>();
 
   constructor() {
-
-    setInterval(() => {
-      this.user.name = "modif"
-    }, 2000);
   }
 
   ngOnInit(): void {
   }
 
   submit(userData: any) {
-    console.log(userData);
-
     const user = new User('', false);
     Object.assign(user, this.user);
-
     this.usercreate.emit(user);
-
   }
 }

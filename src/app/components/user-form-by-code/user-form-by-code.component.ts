@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { User } from 'src/app/models/user';
 
 @Component({
@@ -13,10 +13,19 @@ export class UserFormByCodeComponent implements OnInit {
   usercreate = new EventEmitter<User>();
 
   userForm: FormGroup;
+  nameCtrl: FormControl;
+
 
   constructor(fb: FormBuilder) {
+
+    this.nameCtrl = fb.control('', [
+      Validators.required,
+      Validators.minLength(4)
+    ]);
+
+
     this.userForm = fb.group({
-      name: fb.control(''),
+      name: this.nameCtrl,
       isAdmin: fb.control(false),
     });
   }
