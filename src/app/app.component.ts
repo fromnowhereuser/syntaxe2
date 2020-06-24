@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { User } from './models/user';
 import { UsersGenericService } from './services/users-generic.service';
+import { of, from } from 'rxjs';
+import { map, reduce, switchMap } from 'rxjs/operators'
 
 @Component({
   selector: 'app-root',
@@ -22,6 +24,23 @@ export class AppComponent {
     this.title = {
       caption: 'syntaxe'
     };
+    
+    from([1, 2, 3])
+      .pipe(
+        map(val => val * 2),
+        reduce((acc, val) => acc + val)
+      )
+      .subscribe(val => console.log(val));
+
+
+    of([1, 2, 3])
+      .pipe(
+        switchMap(val => val),
+        map(val => val * 2),
+        reduce((acc, val) => acc + val)
+      )
+      .subscribe(val => console.log(val));
+
   }
 
   public handleKeydown(event: KeyboardEvent) {
