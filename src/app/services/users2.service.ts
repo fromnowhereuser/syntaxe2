@@ -9,13 +9,15 @@ import { plainToClass } from "class-transformer";
 @Injectable({
   providedIn: 'root'
 })
-export class Users2Service implements UsersGenericService {
+export class Users2Service extends UsersGenericService {
 
   private url = 'http://91.121.148.187:8080/users';
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+    super([]);
+  }
 
   getAllAsync(): Observable<User[]> {
     // return this
@@ -31,21 +33,35 @@ export class Users2Service implements UsersGenericService {
     //   toArray()
     // );
 
+    this
+      .http
+      .get<Object[]>(this.url)
+      .pipe(
+        map(tab => plainToClass(User, tab))
+      ).subscribe(val => {
+        this.next(val);
+      })
+
     return this
       .http
       .get<Object[]>(this.url)
       .pipe(
         map(tab => plainToClass(User, tab))
-      );
+      )
+
   }
 
   getAll(): User[] {
-
     return [];
   }
-  addUser(user: User) {
+
+  addUser(user: User): Observable<User[]> | User[] {
     //https://angular.io/guide/http
-    this.http.post(this.url, user)
-    .subscribe(val => console.log(val));
+    return this
+      .http
+      .post<User[]>(this.url, user)
+      .pipe(
+        map(tab => plainToClass(User, tab))
+      )
   }
 }

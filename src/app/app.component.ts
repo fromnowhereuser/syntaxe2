@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from './models/user';
 import { UsersGenericService } from './services/users-generic.service';
-import { of, from } from 'rxjs';
+import { of, from, Observable } from 'rxjs';
 import { map, reduce, switchMap } from 'rxjs/operators'
 
 @Component({
@@ -27,10 +27,10 @@ export class AppComponent {
     };
 
     this
-    .usersService
-    .getAllAsync()
-    .subscribe(val => this.users = val);
-    
+      .usersService
+      .getAllAsync()
+      .subscribe(val => this.users = val);
+
   }
 
   public handleKeydown(event: KeyboardEvent) {
@@ -43,7 +43,12 @@ export class AppComponent {
   }
 
 
-  public addUser(event: MouseEvent, input: HTMLInputElement): void {
-    this.usersService.addUser(new User(input.value, false));
+  public addUser(user: User): void {
+    console.log('post');
+
+    (this.usersService.addUser(user) as Observable<User[]>)
+    .subscribe(val => {
+      this.usersService.getAllAsync();
+    });
   }
 }
